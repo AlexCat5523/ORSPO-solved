@@ -1,0 +1,15 @@
+CC = gcc
+CFLAGS = -Wall -Wpedantic -Werror
+TARGET = main
+SOURCES = main.c
+OBJECTS = $(SOURCES:.c=.o)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(TARGET)
+
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
