@@ -1,5 +1,9 @@
 #include <stdio.h>
 #include "lib.h"
+#include "lib.h"
+#include "lib.h"
+#include "lib.h"
+
 
 #define X 5
 int main()
