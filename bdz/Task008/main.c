@@ -1,14 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main(){
-int x = 5;
-    int arr[100];
-arr[1000] = 20;
-    printf("Hello");
-if (x > 3) 
+// #define X 5 // сделаем x константой
+// #define LEN 100 // сделаем длину списка константой
+// #define VAL 20 // сделаем значение, которое мы присваиваем в 13-й строчке, константой
+// #define INDEX 5 // индекс для списки в 13-й строчке
+
+enum {
+    X = 5,      // сделаем x константой
+    LEN = 100,  // сделаем длину списка константой
+    VAL = 20,   // сделаем значение, которое мы присваиваем в 13-й строчке, константой
+    INDEX = 5   // индекс для списки в 13-й строчке
+};
+
+int main()
 {
-printf("World");
-}
-return 0;
+	int xxx = X;
+	int arr[LEN];
+	arr[INDEX] = VAL;
+	printf("Hello");
+	if (xxx > 3) {
+		printf("World");
+	}
+	return 0;
 }
