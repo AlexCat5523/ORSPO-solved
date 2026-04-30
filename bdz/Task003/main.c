@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define X
+// #define X
 
 int main()
 {
