@@ -1,7 +1,10 @@
-.PHONY: clean all
+.PHONY: clean run
 
 main: clean
-	gcc -c *.c
-	gcc *.o -o $@
+	gcc -c main.c
+	gcc main.o -o $@
 clean:
-	rm -f *.o
+	rm -f main.o
+
+run: main
+	./main
