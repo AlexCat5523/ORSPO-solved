@@ -55,7 +55,7 @@ clang-tidy main.c -- -std=c11
 
 
 ```C
-    #include <stdio.h>
+#include <stdio.h>
 
 enum {
     X = 5,      // сделаем x константой
