@@ -2,7 +2,8 @@
 
 double my_function(int x)
 {
-  // Enter your code
+  double res = (double)(x * x + 5 * x + 6) / (1 + x + x * x);
+  return res;
 }
 
 int main(void)

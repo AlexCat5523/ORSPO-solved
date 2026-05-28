@@ -18,3 +18,15 @@ $
 ```c
 double my_function(int x);
 ```
+
+
+## Решение
+Все в файле: в строчке `double res = (double)(x * x + 5 * x + 6) / (1 + x + x * x);` `(double)` переводит все `x` из `int` в `double`
+
+Для запуска: 
+```bash
+gcc main.c -o main
+./main
+```
+
+Для повторного запуска: `./main`

@@ -32,3 +32,47 @@
 # Вывод:
 0 0
 ```
+
+## Решение
+1) Создаем массив
+```c
+int arr[n];
+  for (int i = 0; i < n; i++) {
+    int val;
+    scanf("%d", &val);
+    arr[i] = val;
+  }
+```
+2) Проверяем необходимые условия (n == 0, n == 1 и остальные)
+Max и min находим почти как в ЕГЭ.
+
+```c
+if (n == 0) {
+    printf("0 0");
+  } else if (n == 1) {
+    printf("%d %d", arr[0], arr[0]);
+  } else {
+    int maxi = -51325123;
+    int mini = 51325123;
+    for (int i = 0; i < n; i++) {
+      int val = arr[i];
+
+      if (val > maxi) {
+        maxi = val;
+      }
+      if (val < mini) {
+        mini = val;
+      }
+    }
+    printf("%d %d", maxi, mini);
+  }
+```
+
+
+Для запуска: 
+```bash
+gcc main.c -o main
+./main
+```
+
+Для повторного запуска: `./main`

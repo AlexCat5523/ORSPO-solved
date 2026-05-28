@@ -26,3 +26,41 @@
 # Вывод:
 5 3 6 7
 ```
+
+## Решение
+1) Создаем массив
+
+```c
+int arr[n];
+for (int i = 0; i < n; i++) {
+    int val;
+    scanf("%d", &val);
+    arr[i] = val;
+}
+```
+2) Создаем массив префиксных сумм
+```c
+int prefix_arr[n];
+for (int i = 0; i < n; i++) {
+    int sum = 0;
+    for (int j = 0; j < i + 1; j++) {
+        sum += arr[j];
+    }
+    prefix_arr[i] = sum;
+}
+```
+3) Печатаем массив (в одну строчку)
+
+```c
+for (int i = 0; i < n; i++) {
+    printf("%d ", prefix_arr[i]);
+}
+```
+
+Для запуска: 
+```bash
+gcc main.c -o main
+./main
+```
+
+Для повторного запуска: `./main`

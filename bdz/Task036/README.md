@@ -18,3 +18,17 @@ ax^2 + bx + c = 0
 ```c
 int solve_quadratic(double a, double b, double c, double *x1, double *x2);
 ```
+
+## Решение
+Решаем через дискриминант и записываем в корни x1 и x2.
+
+В main добавлены две переменные x1 и x2, которые передаются в функцию `solve_quadratic`
+
+*Флаг -lm для подключения math.h*
+Для запуска: 
+```bash
+gcc main.c -lm -o main
+./main
+```
+
+Для повторного запуска: `./main`

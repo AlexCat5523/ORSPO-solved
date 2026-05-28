@@ -3,7 +3,18 @@
 
 int is_palindrome(const char *s)
 {
-  // Enter your code
+  int ind = 0;
+  int count = 0;
+  while (s[ind] != '\0') {
+    ind++;
+    count++;
+  }
+  for (int i = 0; i < count; i++) {
+    if (s[i] != s[count - i - 1]) {
+      return 0;
+    }
+  }
+  return 1;
 }
 
 int main(void)

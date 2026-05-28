@@ -2,7 +2,14 @@
 
 double factorial(int n)
 {
-  // Enter your code
+  if (n < 0) {
+    return -1.0;
+  }
+  double res = 1;
+  for (int i = 1; i < n + 1; i++) {
+    res *= i;
+  }
+  return res;
 }
 
 int main(void)

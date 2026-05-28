@@ -2,7 +2,8 @@
 
 double progression(int a1, int d, int n)
 {
-  // Enter your code
+  double res = (double)(a1 + (n - 1) * d);
+  return res;
 }
 
 int main(void)
