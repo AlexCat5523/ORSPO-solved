@@ -2,7 +2,13 @@
 
 int min_of_three(int a, int b, int c)
 {
-  // Enter your code
+  if ((a <= b && b <= c) || (a <= c && c <= b)) {
+    return a;
+  }
+  if ((b <= a && a <= c) || (b <= c && c <= a)) {
+    return b;
+  }
+  return c;
 }
 
 int main(void)

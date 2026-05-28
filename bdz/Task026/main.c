@@ -2,7 +2,9 @@
 
 void seconds_to_time(int n)
 {
-  // Enter your code
+  int hours = n / (3600);
+  int minutes = n / 60;
+  printf("Hours: %d; Minutes: %d", hours, minutes);
 }
 
 int main(void)

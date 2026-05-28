@@ -2,7 +2,15 @@
 
 int middle_of_three(int a, int b, int c)
 {
-  // Enter your code
+  if ((a >= b && a <= c) || (a >= c && a <= b)) {
+    return a;
+  }
+
+  if ((b >= a && b <= c) || (b >= c && b <= a)) {
+    return b;
+  }
+
+  return c;
 }
 
 int main(void)

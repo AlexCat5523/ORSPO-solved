@@ -9,8 +9,8 @@ int main() {
     else
         printf("No!\n");
 
-    //float x = 12345678.12345678;
-    //printf("Float X = %20.8f\n", x);
+    float x = 12345678.12345678;
+    printf("Float X = %20.8f\n", x);
   
     return 0;
 }
