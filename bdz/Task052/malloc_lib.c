@@ -25,15 +25,41 @@ struct mem_control_block {
 
 void malloc_init()
 {
-	///
+	last_valid_address = sbrk(0);	// текущий адрес программы
+
+	managed_memory_start = last_valid_address;
+
+	has_initialized = 1;
 }
 
 
 void* malloc(long numbytes) {
-	///
+	void* curr_location;
+	struct mem_control_block* current_location_mcb;
+	void* memory_location;
+
+	if (!has_initalized) {
+		malloc_init();
+	}
+
+	long total_size = numbytes + sizeof(struct mem_control_block);
+	memory_location = sbrk(total_size);
+
+	assert(memory_location != (void*)-1);
+
+	current_location_mcb = (struct mem_control_block*)memory_location;
+
+	current_location_mcb->is_available = 0;
+	current_location_mcb->size = total_size - sizeof(struct mem_control_block);
+
+	last_valid_address = sbrk(0);
+
+	return (void*)(current_location_mcb + 1);
 }
 
 void free(void* firstbyte) {
-	///
+	struct mem_control_block* mcb;
+	mcb = (struct mem_control_block*)firstbyte - 1;
+	mcb->is_available = 1;
 }
 
