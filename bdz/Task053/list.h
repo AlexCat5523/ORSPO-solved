@@ -12,4 +12,3 @@ void delete_value(Node** head, int value);
 Node* find(Node* head, int value);
 void print_list(Node* head);
 void free_list(Node* head);
-

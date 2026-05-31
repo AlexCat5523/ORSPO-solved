@@ -22,6 +22,7 @@ int main() {
     if (found)
         printf("Found: %d\n", found->data);
 
+    print_list_reverse(head);
     free_list(head);
     return 0;
 }
