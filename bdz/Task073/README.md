@@ -109,3 +109,47 @@ int main(void)
 - Какую максимальную и минимальную оценку можно поставить, если использовать структуру `Student` или `Student_b`? Можно ли как-то оптимизировать это, принимая во внимание контекст учебы и что отрицательных оценок не бывает?
 - Поступило задание: теперь у учеников 100 балльная система оценивая и нужно, чтобы у нас была подходящая структура для записи оценок ученика. Вам необходимо представить пример кода (подобный в файле), который учитывает это. Структура должна быть оптимальной по размеру.
 Написав структуру и код, где она используется, объясните, какие еще были варианты решения и почему ваш вариант самый оптимальный.
+
+## Решение
+1) В структуре `Student_b` используются битовые поля, в `Student` - нет
+2) `Student_b`: 
+    - 20 байт на char + 42 бита на битовые поля. Одно битовое поле = 4 байта (32 бита), значит всего битовых полей 2 * 4 = 8 => 28 байт.
+  `Student`: 
+    - 20 байт + 14 * 4 = 76 байт
+3) У `Student` весь диапазон int (от -2^31 до 2^31), у `Student_b` от -4 до 3
+4) Код ИИшный ,не проверялся, успехов:
+```c
+#include <stdio.h>
+
+typedef struct Student_100 {
+    char name[20];
+    
+    /* 14 предметов по 7 бит каждый. Всего 98 бит */
+    unsigned char Russian : 7;
+    unsigned char Literature : 7;
+    unsigned char Physics : 7;
+    unsigned char English : 7;
+    unsigned char Science : 7;
+    unsigned char Mathematics : 7;
+    unsigned char History : 7;
+    unsigned char Geography : 7;
+    unsigned char Social_Studies : 7;
+    unsigned char Chemistry : 7;
+    unsigned char Biology : 7;
+    unsigned char Economics : 7;
+    unsigned char Art : 7;
+    unsigned char IT : 7;
+} St_100;
+
+int main() 
+{
+    St_100 stud;
+    stud.Mathematics = 100; // Максимальный балл
+    stud.Physics = 75;
+    
+    printf("Размер оптимальной структуры St_100: %lu байт\n", sizeof(stud));
+    printf("Оценки: Математика = %d, Физика = %d\n", stud.Mathematics, stud.Physics);
+    
+    return 0;
+}
+```

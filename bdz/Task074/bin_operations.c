@@ -2,7 +2,15 @@
 
 void bin(long unsigned int k, long unsigned int size)
 {
-	///
+	int res[size * 8];
+	for (int i = size * 8 - 1; i >= 0; i--) {
+		res[i] = k % 2;
+		k = k / 2;
+	}
+
+	for (int i = 0; i < size * 8; i++) {
+		printf("%d", res[i]);
+	}
 }
 
 struct byte_s {
@@ -20,7 +28,7 @@ union code
 {
 	unsigned char letter;
 	struct byte_s bitfield;
-}byte;
+} byte;
 
 
 int main()
@@ -28,7 +36,7 @@ int main()
 	union code a, b;
     a.letter = 0b00000000;
     b.letter = 0b11111111;
-    a.letter = setbit(a.letter, 5);
-    bin(a.letter, sizeof(a.letter)); // печатает на экран число в двоичном виде
+    // a.letter = setbit(a.letter, 5);
+    bin(5, 1); // печатает на экран число в двоичном виде
 	return 0;
 }
