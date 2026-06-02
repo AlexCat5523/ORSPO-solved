@@ -1,16 +1,28 @@
  .global _start
 
 .data
-    ; что-то   
+mes_eq:
+    .ascii "equal\n" 
+
+mes_no_eq:
+    .ascii "no equal\n"
+
 .text
 _start:
 
         movq     $0, %rbx
 N_EQ:
-        ; что-то        
+        inc %rax
+        cmp $5, %rax
         jne N_EQ
 
-        ; и тут что-то
+
+        movq $mes_eq, %rsi
+        movq $1, %rdi
+        movq $6, %rdx
+        movq $1, %rax
+        syscall
+
 
         mov     $60, %rax               
         mov     $0, %rdi                

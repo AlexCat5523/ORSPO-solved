@@ -9,10 +9,15 @@ func:
     mov 24(%rbp), %rbx     
     add %rbx, %rax         
 
+    mov 32(%rbp), %rcx
+    add %rcx, %rax
+
     pop %rbp
     ret
 
 _start:
+    mov $3, %rax
+    push %rax
     mov $7, %rax
     push %rax              
     mov $5, %rax
@@ -20,7 +25,9 @@ _start:
 
     call func
     
-    add $16, %rsp           
+    mov %rax, %rbx
+
+    add $24, %rsp           
     mov $60, %rax
     mov %rbx, %rdi
     syscall

@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-#define print_value(x) _Generic((x), \
+#define PRINT_VALUE(x) _Generic((x), \
     int : print_int, \
     long: print_long, \
     float: print_float, \
@@ -11,8 +11,30 @@
     default: print_error \
 )(x)
 
+void print_int(int x) {
+    printf("Int number: %d\n", x);
+}
+void print_long(long x) {
+    printf("Long number: %ld\n", x);
+}
+void print_float(float x) {
+    printf("Float: %f\n", x);
+}
+void print_double(double x) {
+    printf("Double: %lf\n", x);
+}
+void print_string(char* x) {
+    printf("String: %s\n", x);
+}
+void print_ptr(void* x) {
+    printf("Number: %p\n", x);
+}
+void print_error(int x) {
+    printf("unsupported type\n");
+}
 
-#define max(x, y) _Generic((x), \
+
+#define MAX(x, y) _Generic((x), \
     int: max_int, \
     float: max_float, \
     double: max_double, \
@@ -22,7 +44,7 @@
     long long: max_long_long, \
     unsigned long long: max_u_long_long, \
     default: max_default \
-)(x)
+)(x, y)
 
 int max_int(int x, int y) {
     return (x > y ? x : y);
@@ -48,34 +70,71 @@ long long max_long_long(long long x, long long y) {
 unsigned long long max_u_long_long(unsigned long long x, unsigned long long y) {
     return (x > y ? x : y);
 }
-void max_default(int x, int y) {
-    printf("Unsupported type");
+int max_default(int x, int y) {
+    printf("Unsupported type\n");
+    return 0;
 }
 
+#define IS_INTEGER(x) _Generic((x), \
+    char: is_char, \
+    int: is_int, \
+    short: is_short, \
+    long: is_long, \
+    unsigned int: is_u_int, \
+    unsigned short: is_u_short, \
+    unsigned long: is_u_long, \
+    default: is_integer_default \
+)(x)
 
-void print_int(int x) {
-    printf("Int number: %d", x);
+char is_char(char x) {
+    return 1;
 }
-void print_long(long x) {
-    printf("Long number: %ld", x);
+int is_int(int x) {
+    return 1;
 }
-void print_float(float x) {
-    printf("Float: %f", x);
+short is_short(short x) {
+    return 1;
 }
-void print_double(double x) {
-    printf("Double: %lf", x);
+long is_long(long x) {
+    return 1;
 }
-void print_string(char* x) {
-    printf("String: %s", x);
+unsigned int is_u_int(unsigned int x) {
+    return 1;
 }
-void print_ptr(void* x) {
-    printf("Number: %p", x);
+unsigned short is_u_short(unsigned short x) {
+    return 1;
 }
-void print_error(int x) {
-    printf("unsupported type");
+unsigned long is_u_long(unsigned long x) {
+    return 1;
 }
+int is_integer_default(int x) {
+    return 0;
+}
+
+#define FORMAT_SPECIFIER(x) _Generic((x), \
+    int: "%d",                            \
+    long: "%ld",                          \
+    long long: "%lld",                    \
+    unsigned int: "%u",                   \
+    unsigned long: "%lu",                 \
+    float: "%f",                          \
+    double: "%lf",                        \
+    char: "%c",                           \
+    char*: "%s",                          \
+    const char*: "%s",                    \
+    default: "%p"                         \
+)
+
+#define PRINT_DIRECT(x) do { \
+    printf(FORMAT_SPECIFIER(x), (x)); \
+    printf("\n"); \
+} while(0)
 
 int main() {
-    int number = 10;
-    print_value(number);
+    int x = 10;
+    int y = 15;
+    PRINT_VALUE(x);
+    printf("Max value between %d and %d: ", x, y);
+    PRINT_VALUE(MAX(x, y));
+    PRINT_DIRECT(x);
 }

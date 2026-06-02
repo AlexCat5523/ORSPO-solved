@@ -5,18 +5,22 @@ _start:
     # Кладём два числа на стек
     mov $10, %rax
     push %rax            
-    mov $32, %rax
+    mov $2, %rax
     push %rax           
 
+
+    pop %rax
     # Читаем числа с помощью адресации, не меняем rsp
     mov (%rsp), %rbx      
-    mov 8(%rsp), %rcx     
+    mov -8(%rsp), %rcx     
 
-    # Складываем
-    add %rcx, %rbx        
+    # Вычитаем
+    sub %rcx, %rbx        
 
     # Чистим стек
-    add $16, %rsp         
+    add $8, %rsp         
+
+
 
     # Выход с кодом = rbx
     mov $60, %rax        
